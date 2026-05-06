@@ -1,0 +1,31 @@
+# use `makepkg -p PKGBUILD.dev --skipchecksums' to build the pkg
+pkgname="ptunnel-ng"
+pkgver=master
+pkgrel=1
+pkgdesc="A TCP forwarder and proxy used for ICMP/UDP tunneling without creating tun devices. (Ping Tunnel, ICMP Echo Tunnel, UDP Tunnel)"
+arch=('i686' 'x86_64')
+url='https://www.github.com/lnslbrty/ptunnel-ng'
+license=('BSD-3')
+makedepends=('git')
+provides=("ptunnel-ng=${pkgver}")
+source=("https://github.com/lnslbrty/ptunnel-ng/archive/master.zip")
+
+build() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+    autoreconf -fi
+	./configure \
+		--prefix=/usr \
+		--libdir=/usr/lib \
+		--disable-pcap \
+		--disable-selinux
+	make V=s
+}
+
+package() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	make DESTDIR="${pkgdir}" install
+	find "${pkgdir}" -type d -name .git -exec rm -r '{}' +
+	install -D -m644 COPYING "${pkgdir}/usr/share/licenses/ptunnel-ng/LICENSE"
+	install -D -m644 contrib/ptunnel-ng.conf "${pkgdir}/etc/conf.d/ptunnel-ng"
+	install -D -m644 contrib/ptunnel-ng.service "${pkgdir}/etc/systemd/system/ptunnel-ng.service"
+}

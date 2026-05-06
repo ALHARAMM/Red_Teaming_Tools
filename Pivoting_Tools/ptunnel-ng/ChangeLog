@@ -1,0 +1,159 @@
+PingTunnel-NG Changelog
+=======================
+
+1.42 - 27. April 2019
+- updated SeLinux policy file
+- added SeLinux policy compile script
+- list available pcap devices
+- fixed build errors related to pcap
+
+1.41 - 03. April 2019
+- change the RNG device during ./configure (fixes issues on systems without
+  enough entropy avilable from it's random source)
+
+1.40 - 20. March 2019
+- improved empty ping mode (by Masaq-)
+- fixed NULL pointer derefs and division by zero
+- more secure chroot
+- CWE-126 workaround reported by codacy
+- switched to /dev/random as RNG except for Windows
+- fixed CLang related build errors
+- fixed SEGFAULT when network not reachable (by Masaq-)
+- added extended options for protocol tuning (by Masaq-)
+- Systemd support (also in debian/rules)
+- fixed compilation issues for Android targets
+- fixed 100% CPU consumption when receive window is full but data via select()
+available
+(by Masq-)
+
+1.32 - 24. January 2019
+- improved error logging
+- introduced icmp_filter via setsockopt to filter unwanted icmp messages
+- more "secure" random number generator
+- fixed NULL deref and invalid memory access by elnerd
+(https://github.com/elnerd) PoC: https://www.securityfocus.com/bid/54627/info
+
+1.31 - 03. December 2018
+- added Android build support (requires a root'ed device!)
+- fixed ArchLinux PKGBUILD/AUR
+
+1.30 - 19. October 2018
+- travis-ci, coverity integration
+- xcompile issue for mingw-w64 fixed
+- fixed wrong usage of format() specifiers
+
+1.20 - 15. July 2018
+- Readme improvements
+- Fixes a possible memory leak when a packet could not send
+- Better error handling on socket descriptor creation
+- All Coverity issues fixed
+
+1.00 - 18. December 2017
+- First public release
+- Fixes a exploitable memory leak (proxy/forwarder) if using password
+  protected challenge response authentication.
+- Fixes an invalid memory write during a pcap capture.
+- Full source refactoring. The code should be more readable imho.
+- This project is now Autotools based.
+  Disable optional features: SeLinux, pcap.
+- Removed an already disabled and highly buggy feature: kPT_add_iphdr
+- Added a more "GNU" alike option parsing.
+- Support a user defined PingTunnel-NG magic value which is required
+  for bypassing Cisco IPS (and maybe other IDS/IPS/Firewalls).
+  This feature was well tested against Cisco's "IronPort" which
+  scans for fingerprints in an ICMP packet (PingTunnel magic value).
+
+PingTunnel Changelog
+====================
+
+0.72 - 5. September 2011
+- Fixes an authentication bug that would manifest as hung connections with
+  protocols that send data from the client-side before receiving data from
+  the server-side. Thanks to StalkR for locating the bug and fixing it.
+- Fixes a crash when attempting to enable packet-capture for non-existing
+  network devices. Thanks to Steffen Wendzel for the patch.
+
+0.71 - 22. June 2009
+- Added security features and SELinux support, courtesy of Sebastien Raveau.
+
+0.70 - 12. January 2009
+- Added rudimentary support for tunneling over udp port 53.
+- Added built-in support for compiling on Windows, thanks to Mike Miller.
+- Added syslog support, also courtesy of Mike Miller.
+- Experimental support for spoofing the source IP address. The source
+  address must be explicitly configured in the source code, and it might
+  not work (which is why it's experimental). To enable, define
+  kPT_add_iphdr to 1.
+
+0.62 - [Never released]
+- Added many comments to the ptunnel header file. 
+- Moved most include directives to the header file.
+- Fixed crash if proxy or destination hostnames could not be looked up.
+
+0.61 - 26. May 2005
+- Noted that ptunnel now works without packet capturing on Mac OS X 10.4
+  Tiger.
+- Log files are now opened in append-mode (i.e., not truncated).
+- Fixed a bug that could cause ptunnel to crash if passwords shorter than
+  16 characters were used (the overwhelming majority of passwords, most
+  likely!).
+
+0.60 - 15. Apr 2005
+- Added authentication support, changing parts of the ptunnel protocol.
+- Added a manpage.
+- Added MD5 implementation by L. Peter Deutsch for authentication.
+- Moved declaration of a variable to allow ptunnel to compile cleanly
+  on gcc 2.95 - thanks Choong!
+- Added error handling for proxy connections.
+- Fixed a problem with printing send/recv info. All verbosity levels
+  should work now.
+- Updated contact info.
+
+0.55 - 18. Feb 2005
+- Fixed a locking bug that would manifest itself when the maximum
+  connection count on the proxy was reached.
+- Fixed ptunnel to compile correctly on 64-bit architectures (thanks
+  to Åsmund Grammeltvedt for pointing out the necessary changes!)
+- Added a new logging level (level 5). Level 4 no longer outputs send
+  and receive info; for this info level 5 is necessary.
+- When libpcap is in use, the interface is no longer put in promiscous
+  mode. This has never been necessary, and also makes it impossible to
+  use ptunnel with more than one client on the same network.
+- Discovered a problem with pcap that would cause ptunnel to hang when
+  pcap was in use. This problem has not been resolved; the workaround is
+  to simply re-execute the client, or disable pcap if possible.
+- Added support for specifying a log file on the command line, using
+  the -f switch.
+
+0.54 - 1. Feb 2005
+- Fixed a byte-order bug (thanks Alfred!)
+
+0.53 - 31. Jan 2005
+- Fixed a threading bug, and implemented support for limiting the
+  maximum number of tunnels.
+
+Thanks to Alfred Young for reporting and fixing the following bugs:
+- Fixed a bug with packets captured via libpcap, where the struct
+  sockaddr wasn't properly zeroed.
+- Fixed a byte order bug in create_and_insert_proxy_desc.
+- Fixed a memory leak in remove_proxy_desc.
+
+
+0.52 - 3. Jan 2005
+- Fixed a problem introduced by the ICMP ID field changes. The 
+  proxy didn't retain the ID of the packets received from clients,
+  resulting in dropped ICMP packets at the router. This in turn
+  lead to the tunnel no longer working, depending on the strictness
+  of the router. This version fixes that problem.
+- Makefile is better now, thanks to Dries Verachtert.
+
+
+0.51 - 2. Jan 2005
+- Fixed incorrect checksum calculation for resent packets.
+- Stopped relying on the ICMP packet's "built-in" ID field,
+  and moved the information to the data portion of the packet.
+- Changed default verbosity level from debug to verbose.
+
+
+0.50 - 7. Dec 2004
+Initial public release.

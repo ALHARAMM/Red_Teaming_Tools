@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
+CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
+
+%:
+	dh $@ --with autoreconf
+
+override_dh_auto_build:
+	dh_auto_build -- CFLAGS="-Wall -Werror $(CFLAGS)" LDFLAGS="$(LDFLAGS)" CPPFLAGS="$(CPPFLAGS)"
+
+override_dh_auto_install:
+	dh_auto_install
+	install -D -m644 contrib/ptunnel-ng.conf debian/ptunnel-ng/etc/conf.d/ptunnel-ng
+	install -D -m644 contrib/ptunnel-ng.service debian/ptunnel-ng/etc/systemd/system/ptunnel-ng.service
