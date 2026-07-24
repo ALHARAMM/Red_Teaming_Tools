@@ -1,0 +1,26 @@
+# Dirsearch started Sun Jul 19 14:50:53 2026 as: /usr/lib/python3/dist-packages/dirsearch/dirsearch.py -u http://jobs.trilocor.local/
+
+403   282B   http://jobs.trilocor.local/.ht_wsr.txt
+403   282B   http://jobs.trilocor.local/.htaccessBAK
+403   282B   http://jobs.trilocor.local/.htaccess.orig
+403   282B   http://jobs.trilocor.local/.htaccess.bak1
+403   282B   http://jobs.trilocor.local/.htaccess.save
+403   282B   http://jobs.trilocor.local/.htaccess_orig
+403   282B   http://jobs.trilocor.local/.htaccess.sample
+403   282B   http://jobs.trilocor.local/.htaccessOLD2
+403   282B   http://jobs.trilocor.local/.htaccessOLD
+403   282B   http://jobs.trilocor.local/.htaccess_extra
+403   282B   http://jobs.trilocor.local/.htaccess_sc
+403   282B   http://jobs.trilocor.local/.htm
+403   282B   http://jobs.trilocor.local/.html
+403   282B   http://jobs.trilocor.local/.httr-oauth
+403   282B   http://jobs.trilocor.local/.htpasswd_test
+403   282B   http://jobs.trilocor.local/.htpasswds
+301   325B   http://jobs.trilocor.local/assets    -> REDIRECTS TO: http://jobs.trilocor.local/assets/
+200   263B   http://jobs.trilocor.local/assets/
+200   820B   http://jobs.trilocor.local/cgi-bin/printenv
+200     1KB  http://jobs.trilocor.local/cgi-bin/test-cgi
+301   327B   http://jobs.trilocor.local/includes    -> REDIRECTS TO: http://jobs.trilocor.local/includes/
+200     0B   http://jobs.trilocor.local/includes/
+403   284B   http://jobs.trilocor.local/server-status/
+403   284B   http://jobs.trilocor.local/server-status

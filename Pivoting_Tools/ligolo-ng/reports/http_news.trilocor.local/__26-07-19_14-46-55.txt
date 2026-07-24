@@ -1,0 +1,19 @@
+# Dirsearch started Sun Jul 19 14:47:11 2026 as: /usr/lib/python3/dist-packages/dirsearch/dirsearch.py -u http://news.trilocor.local/
+
+403   284B   http://news.trilocor.local/.ht_wsr.txt
+403   284B   http://news.trilocor.local/.htaccess.bak1
+403   284B   http://news.trilocor.local/.htaccess.orig
+403   284B   http://news.trilocor.local/.htaccess_extra
+403   284B   http://news.trilocor.local/.htaccess.save
+403   284B   http://news.trilocor.local/.htaccess.sample
+403   284B   http://news.trilocor.local/.htaccess_orig
+403   284B   http://news.trilocor.local/.htaccess_sc
+403   284B   http://news.trilocor.local/.htaccessOLD2
+403   284B   http://news.trilocor.local/.htaccessOLD
+403   284B   http://news.trilocor.local/.htaccessBAK
+403   284B   http://news.trilocor.local/.htm
+403   284B   http://news.trilocor.local/.html
+403   284B   http://news.trilocor.local/.httr-oauth
+403   284B   http://news.trilocor.local/.htpasswds
+403   284B   http://news.trilocor.local/.htpasswd_test
+403   284B   http://news.trilocor.local/.php
